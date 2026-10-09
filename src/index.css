@@ -1,0 +1,323 @@
+/* Palette lifted from the Léxico design canvas (lexico/lib/core/theme/app_colors.dart). */
+:root {
+  --canvas: #08090a;
+  --shell: #0b0d0c;
+  --surface: #111514;
+  --surface-raised: #141817;
+  --track: #181c1a;
+
+  --card-top: #181d1b;
+  --card-bottom: #121615;
+  --card-back-top: #12211c;
+  --card-back-bottom: #0f1614;
+
+  --accent: #0ca678;
+  --accent-bright: #3fdba4;
+  --accent-hover: #2fd39b;
+  --on-accent: #04150e;
+  --accent-muted: #4e7a6b;
+  --accent-dim: #5f8c7a;
+  --accent-wash: rgb(12 166 120 / 0.12);
+  --accent-line: rgb(12 166 120 / 0.3);
+
+  --text-primary: #edefed;
+  --text-bright: #f3f5f3;
+  --text-on-back: #eff7f3;
+  --text-secondary: #9aa29d;
+  --text-secondary-back: #9ab0a7;
+  --text-muted: #7c8480;
+  /* A notch lighter than the app's #5F6863 so small labels stay readable on the web. */
+  --text-faint: #6d7671;
+  --text-ghost: #4e5652;
+  --text-ghost-back: #41645a;
+
+  --danger: #ff8a8a;
+  --danger-bright: #ff9e9e;
+
+  --hairline: rgb(255 255 255 / 0.08);
+  --hairline-strong: rgb(255 255 255 / 0.12);
+
+  --level-a1: #6c8cff;
+  --level-a2: #3fdba4;
+  --level-b1: #f2b45c;
+  --level-b2: #ff8a8a;
+  --level-c1: #c08cff;
+  --level-c2: #ff7ac6;
+
+  --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+  font: 400 15px/1.5 var(--sans);
+  color: var(--text-secondary);
+  /* Same as body: the scrollbar gutter below is painted with this colour. */
+  background: var(--shell);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reserve scrollbar space on both sides, so the centred column doesn't jump
+   sideways when a long page gets a scrollbar and a short one doesn't. */
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--shell);
+}
+
+h1,
+h2,
+p,
+ul,
+dl,
+dd,
+blockquote {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+/* Read by screen readers, not shown. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+code {
+  font-family: var(--sans);
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+/* ---- Type ---- */
+
+.display {
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+  color: var(--text-bright);
+}
+
+.display em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.display--xl {
+  font-size: clamp(38px, 11vw, 48px);
+}
+
+.display--md {
+  font-size: 30px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.9px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.eyebrow--small {
+  font-size: 11px;
+  letter-spacing: 1.54px;
+}
+
+.hint {
+  font-size: 13px;
+  text-align: center;
+  color: var(--text-faint);
+}
+
+/* ---- Shell ---- */
+
+.app {
+  width: 100%;
+  max-width: 560px;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 0 22px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.center-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 4px;
+  text-align: center;
+}
+
+.center-view .btn {
+  max-width: 360px;
+}
+
+.center-view .btn--primary {
+  margin-top: 16px;
+}
+
+.center-view__message {
+  max-width: 380px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 58px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 12px 40px rgb(12 166 120 / 0.35);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn--primary:disabled {
+  background: var(--surface-raised);
+  color: var(--text-ghost);
+  box-shadow: none;
+  cursor: default;
+}
+
+.btn--ghost {
+  height: 52px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.btn--ghost:hover {
+  color: var(--text-primary);
+}
+
+.btn--danger:hover {
+  color: var(--danger);
+}
+
+.chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0 13px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: rgb(255 255 255 / 0.22);
+  color: var(--text-primary);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--accent-wash);
+  border-color: rgb(12 166 120 / 0.45);
+  color: var(--accent-bright);
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.chip--accent {
+  border-color: rgb(12 166 120 / 0.45);
+  color: var(--accent-bright);
+}
+
+.chip--accent:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent-bright);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
